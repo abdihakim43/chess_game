@@ -48,7 +48,7 @@ We may also try to add:
 
 The game starts with a normal chess setup. Each player takes turns clicking a piece and selecting a valid move. The rules for piece movement and capturing are enforced in the game logic. When a check or checkmate occurs, the game ends or displays a warning.
 
-All logic will be separated into proper classes (e.g., `Piece`, `Board`, `GameManager`) to allow easier testing and development.
+All logic will be separated into proper classes (e.g., piece, board, GameManager) to allow easier testing and development.
 
 ---
 
