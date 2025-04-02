@@ -80,3 +80,8 @@ We’re using **MSBuild**, via Visual Studio, to build the project. We will also
 | Week 4 | UI polish, unit tests, and documentation |
 
 ---
+
+
+##  Project Kanban Board
+
+Track progress and tasks on our [Kanban board](https://github.com/users/abdihakim43/projects/1). 
