@@ -85,3 +85,13 @@ We’re using **MSBuild**, via Visual Studio, to build the project. We will also
 ##  Project Kanban Board
 
 Track progress and tasks on our [Kanban board](https://github.com/users/abdihakim43/projects/1). 
+
+
+
+
+## 🛠️ How to Build and Run
+
+1. Open the project in Visual Studio 2022  
+2. Make sure .NET 8 is installed  
+3. Build the solution (Ctrl + Shift + B)  
+4. Run the project (F5 or click Start)  
