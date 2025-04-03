@@ -1,0 +1,18 @@
+# Ignore Visual Studio temp files
+.vs/
+*.user
+*.suo
+*.userosscache
+*.sln.docstates
+
+# Ignore build output
+bin/
+obj/
+
+# Ignore build logs
+*.log
+
+# Others
+*.db
+*.db-shm
+*.db-wal
