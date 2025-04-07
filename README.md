@@ -89,7 +89,7 @@ Track progress and tasks on our [Kanban board](https://github.com/users/abdihaki
 
 
 
-## 🛠️ How to Build and Run
+##  How to Build and Run
 
 1. Open the project in Visual Studio 2022  
 2. Make sure .NET 8 is installed  
