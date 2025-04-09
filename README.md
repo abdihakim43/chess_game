@@ -15,12 +15,13 @@ This is a chess game built as part of our Software Development course. The goal 
 | Name                 | GitHub Handle          |
 | Abdihakim Mahamed    | [@abdihakim43](https://github.com
 abdihakim43) 
+| Hamed Sarvari 
  
  
 ## Declaration
 
 I, Abdihakim Mahamed, declare that I am the sole author of the content I add to this repository.  
-I, Name 2, declare that I am the sole author of the content I add to this repository.  
+I, Hamed Sarvari, declare that I am the sole author of the content I add to this repository.  
 
 ---
 
