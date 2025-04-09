@@ -15,7 +15,8 @@ This is a chess game built as part of our Software Development course. The goal 
 | Name                 | GitHub Handle          |
 | Abdihakim Mahamed    | [@abdihakim43](https://github.com
 abdihakim43) 
-| Hamed Sarvari 
+
+| Hamed Sarvari        |                         |
  
  
 ## Declaration
