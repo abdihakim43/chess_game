@@ -16,13 +16,15 @@ This is a chess game built as part of our Software Development course. The goal 
  
 
 | Hamed Sarvari        | Saha23me               |
+
+| Alexander Johansson  | Joal22za              |
  
  
 ## Declaration
 
 I, Abdihakim Mahamed, declare that I am the sole author of the content I add to this repository.  
 I, Hamed Sarvari, declare that I am the sole author of the content I add to this repository.  
-
+I, Alexander Johansson, declare that I am the sole author of the content I add to this repository.  
 ---
 
 ##  What We’re Building
