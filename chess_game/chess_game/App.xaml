@@ -4,6 +4,6 @@
              xmlns:local="clr-namespace:chess_game"
              StartupUri="MainWindow.xaml">
     <Application.Resources>
-         
+
     </Application.Resources>
 </Application>
