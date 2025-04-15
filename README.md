@@ -12,12 +12,11 @@ This is a chess game built as part of our Software Development course. The goal 
 
 ## Group Members
 
-| Abdihakim Mahamed    | abdihakim43            |
- 
-
-| Hamed Sarvari        | Saha23me               |
-
-| Alexander Johansson  | Joal22za              |
+| **Name**              | **GitHub Username**    |
+|-----------------------|------------------------|
+| Abdihakim Mahamed     | `abdihakim43`          |
+| Hamed Sarvari         | `Saha23me`             |
+| Alexander Johansson   | `Joal22za`             |
  
  
 ## Declaration
