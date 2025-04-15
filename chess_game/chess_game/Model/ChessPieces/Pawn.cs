@@ -34,7 +34,14 @@ namespace chess_game.Model
                     return true;
                 }
 
-                // Capturing ........... implementation below simple if the new position isn't null
+                // Capturing diagonally
+                if (Math.Abs(newPosition.Col - Position.Col) == 1 &&
+                    newPosition.Row == Position.Row + direction &&
+                    board.Board[newPosition.Row, newPosition.Col] != null &&
+                    board.Board[newPosition.Row, newPosition.Col].Color != this.Color)
+                {
+                    return true; // Valid capture move
+                }
 
                 return false;
             }
