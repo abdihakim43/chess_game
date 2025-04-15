@@ -69,7 +69,7 @@ namespace chess_game
                             Text = pieceSymbol,
                             FontSize = 36,
                             FontWeight = FontWeights.Bold,
-                            Foreground = (row + col) % 2 == 0 ? Brushes.Black : Brushes.White,
+                            Foreground = piece.Color == "White" ? Brushes.White : Brushes.Black,
                             HorizontalAlignment = HorizontalAlignment.Center,
                             VerticalAlignment = VerticalAlignment.Center
                         };
