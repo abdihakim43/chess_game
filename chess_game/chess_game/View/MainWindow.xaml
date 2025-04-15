@@ -64,84 +64,77 @@
         <TextBlock Grid.Row="7" Grid.Column="9" Text="2" VerticalAlignment="Center" Margin="5"/>
         <TextBlock Grid.Row="8" Grid.Column="9" Text="1" VerticalAlignment="Center" Margin="5"/>
 
+        <!-- Apply Sandcastle Dark (184, 139, 74) and Light (227, 193, 111) colors to all rows -->
+        <Border Grid.Row="1" Grid.Column="1" Background="#B88B4A"/>
+        <Border Grid.Row="1" Grid.Column="2" Background="#E3C16F"/>
+        <Border Grid.Row="1" Grid.Column="3" Background="#B88B4A"/>
+        <Border Grid.Row="1" Grid.Column="4" Background="#E3C16F"/>
+        <Border Grid.Row="1" Grid.Column="5" Background="#B88B4A"/>
+        <Border Grid.Row="1" Grid.Column="6" Background="#E3C16F"/>
+        <Border Grid.Row="1" Grid.Column="7" Background="#B88B4A"/>
+        <Border Grid.Row="1" Grid.Column="8" Background="#E3C16F"/>
 
-        <Border Grid.Row="1" Grid.Column="1" Background="White"/>
-        <Border Grid.Row="1" Grid.Column="2" Background="Black"/>
-        <Border Grid.Row="1" Grid.Column="3" Background="White"/>
-        <Border Grid.Row="1" Grid.Column="4" Background="Black"/>
-        <Border Grid.Row="1" Grid.Column="5" Background="White"/>
-        <Border Grid.Row="1" Grid.Column="6" Background="Black"/>
-        <Border Grid.Row="1" Grid.Column="7" Background="White"/>
-        <Border Grid.Row="1" Grid.Column="8" Background="Black"/>
+        <Border Grid.Row="2" Grid.Column="1" Background="#E3C16F"/>
+        <Border Grid.Row="2" Grid.Column="2" Background="#B88B4A"/>
+        <Border Grid.Row="2" Grid.Column="3" Background="#E3C16F"/>
+        <Border Grid.Row="2" Grid.Column="4" Background="#B88B4A"/>
+        <Border Grid.Row="2" Grid.Column="5" Background="#E3C16F"/>
+        <Border Grid.Row="2" Grid.Column="6" Background="#B88B4A"/>
+        <Border Grid.Row="2" Grid.Column="7" Background="#E3C16F"/>
+        <Border Grid.Row="2" Grid.Column="8" Background="#B88B4A"/>
 
+        <Border Grid.Row="3" Grid.Column="1" Background="#B88B4A"/>
+        <Border Grid.Row="3" Grid.Column="2" Background="#E3C16F"/>
+        <Border Grid.Row="3" Grid.Column="3" Background="#B88B4A"/>
+        <Border Grid.Row="3" Grid.Column="4" Background="#E3C16F"/>
+        <Border Grid.Row="3" Grid.Column="5" Background="#B88B4A"/>
+        <Border Grid.Row="3" Grid.Column="6" Background="#E3C16F"/>
+        <Border Grid.Row="3" Grid.Column="7" Background="#B88B4A"/>
+        <Border Grid.Row="3" Grid.Column="8" Background="#E3C16F"/>
 
-        <Border Grid.Row="2" Grid.Column="1" Background="Black"/>
-        <Border Grid.Row="2" Grid.Column="2" Background="White"/>
-        <Border Grid.Row="2" Grid.Column="3" Background="Black"/>
-        <Border Grid.Row="2" Grid.Column="4" Background="White"/>
-        <Border Grid.Row="2" Grid.Column="5" Background="Black"/>
-        <Border Grid.Row="2" Grid.Column="6" Background="White"/>
-        <Border Grid.Row="2" Grid.Column="7" Background="Black"/>
-        <Border Grid.Row="2" Grid.Column="8" Background="White"/>
+        <Border Grid.Row="4" Grid.Column="1" Background="#E3C16F"/>
+        <Border Grid.Row="4" Grid.Column="2" Background="#B88B4A"/>
+        <Border Grid.Row="4" Grid.Column="3" Background="#E3C16F"/>
+        <Border Grid.Row="4" Grid.Column="4" Background="#B88B4A"/>
+        <Border Grid.Row="4" Grid.Column="5" Background="#E3C16F"/>
+        <Border Grid.Row="4" Grid.Column="6" Background="#B88B4A"/>
+        <Border Grid.Row="4" Grid.Column="7" Background="#E3C16F"/>
+        <Border Grid.Row="4" Grid.Column="8" Background="#B88B4A"/>
 
+        <Border Grid.Row="5" Grid.Column="1" Background="#B88B4A"/>
+        <Border Grid.Row="5" Grid.Column="2" Background="#E3C16F"/>
+        <Border Grid.Row="5" Grid.Column="3" Background="#B88B4A"/>
+        <Border Grid.Row="5" Grid.Column="4" Background="#E3C16F"/>
+        <Border Grid.Row="5" Grid.Column="5" Background="#B88B4A"/>
+        <Border Grid.Row="5" Grid.Column="6" Background="#E3C16F"/>
+        <Border Grid.Row="5" Grid.Column="7" Background="#B88B4A"/>
+        <Border Grid.Row="5" Grid.Column="8" Background="#E3C16F"/>
 
-        <Border Grid.Row="3" Grid.Column="1" Background="White"/>
-        <Border Grid.Row="3" Grid.Column="2" Background="Black"/>
-        <Border Grid.Row="3" Grid.Column="3" Background="White"/>
-        <Border Grid.Row="3" Grid.Column="4" Background="Black"/>
-        <Border Grid.Row="3" Grid.Column="5" Background="White"/>
-        <Border Grid.Row="3" Grid.Column="6" Background="Black"/>
-        <Border Grid.Row="3" Grid.Column="7" Background="White"/>
-        <Border Grid.Row="3" Grid.Column="8" Background="Black"/>
+        <Border Grid.Row="6" Grid.Column="1" Background="#E3C16F"/>
+        <Border Grid.Row="6" Grid.Column="2" Background="#B88B4A"/>
+        <Border Grid.Row="6" Grid.Column="3" Background="#E3C16F"/>
+        <Border Grid.Row="6" Grid.Column="4" Background="#B88B4A"/>
+        <Border Grid.Row="6" Grid.Column="5" Background="#E3C16F"/>
+        <Border Grid.Row="6" Grid.Column="6" Background="#B88B4A"/>
+        <Border Grid.Row="6" Grid.Column="7" Background="#E3C16F"/>
+        <Border Grid.Row="6" Grid.Column="8" Background="#B88B4A"/>
 
+        <Border Grid.Row="7" Grid.Column="1" Background="#B88B4A"/>
+        <Border Grid.Row="7" Grid.Column="2" Background="#E3C16F"/>
+        <Border Grid.Row="7" Grid.Column="3" Background="#B88B4A"/>
+        <Border Grid.Row="7" Grid.Column="4" Background="#E3C16F"/>
+        <Border Grid.Row="7" Grid.Column="5" Background="#B88B4A"/>
+        <Border Grid.Row="7" Grid.Column="6" Background="#E3C16F"/>
+        <Border Grid.Row="7" Grid.Column="7" Background="#B88B4A"/>
+        <Border Grid.Row="7" Grid.Column="8" Background="#E3C16F"/>
 
-        <Border Grid.Row="4" Grid.Column="1" Background="Black"/>
-        <Border Grid.Row="4" Grid.Column="2" Background="White"/>
-        <Border Grid.Row="4" Grid.Column="3" Background="Black"/>
-        <Border Grid.Row="4" Grid.Column="4" Background="White"/>
-        <Border Grid.Row="4" Grid.Column="5" Background="Black"/>
-        <Border Grid.Row="4" Grid.Column="6" Background="White"/>
-        <Border Grid.Row="4" Grid.Column="7" Background="Black"/>
-        <Border Grid.Row="4" Grid.Column="8" Background="White"/>
-
-
-        <Border Grid.Row="5" Grid.Column="1" Background="White"/>
-        <Border Grid.Row="5" Grid.Column="2" Background="Black"/>
-        <Border Grid.Row="5" Grid.Column="3" Background="White"/>
-        <Border Grid.Row="5" Grid.Column="4" Background="Black"/>
-        <Border Grid.Row="5" Grid.Column="5" Background="White"/>
-        <Border Grid.Row="5" Grid.Column="6" Background="Black"/>
-        <Border Grid.Row="5" Grid.Column="7" Background="White"/>
-        <Border Grid.Row="5" Grid.Column="8" Background="Black"/>
-
-
-        <Border Grid.Row="6" Grid.Column="1" Background="Black"/>
-        <Border Grid.Row="6" Grid.Column="2" Background="White"/>
-        <Border Grid.Row="6" Grid.Column="3" Background="Black"/>
-        <Border Grid.Row="6" Grid.Column="4" Background="White"/>
-        <Border Grid.Row="6" Grid.Column="5" Background="Black"/>
-        <Border Grid.Row="6" Grid.Column="6" Background="White"/>
-        <Border Grid.Row="6" Grid.Column="7" Background="Black"/>
-        <Border Grid.Row="6" Grid.Column="8" Background="White"/>
-
-
-        <Border Grid.Row="7" Grid.Column="1" Background="White"/>
-        <Border Grid.Row="7" Grid.Column="2" Background="Black"/>
-        <Border Grid.Row="7" Grid.Column="3" Background="White"/>
-        <Border Grid.Row="7" Grid.Column="4" Background="Black"/>
-        <Border Grid.Row="7" Grid.Column="5" Background="White"/>
-        <Border Grid.Row="7" Grid.Column="6" Background="Black"/>
-        <Border Grid.Row="7" Grid.Column="7" Background="White"/>
-        <Border Grid.Row="7" Grid.Column="8" Background="Black"/>
-
-
-        <Border Grid.Row="8" Grid.Column="1" Background="Black"/>
-        <Border Grid.Row="8" Grid.Column="2" Background="White"/>
-        <Border Grid.Row="8" Grid.Column="3" Background="Black"/>
-        <Border Grid.Row="8" Grid.Column="4" Background="White"/>
-        <Border Grid.Row="8" Grid.Column="5" Background="Black"/>
-        <Border Grid.Row="8" Grid.Column="6" Background="White"/>
-        <Border Grid.Row="8" Grid.Column="7" Background="Black"/>
-        <Border Grid.Row="8" Grid.Column="8" Background="White"/>
+        <Border Grid.Row="8" Grid.Column="1" Background="#E3C16F"/>
+        <Border Grid.Row="8" Grid.Column="2" Background="#B88B4A"/>
+        <Border Grid.Row="8" Grid.Column="3" Background="#E3C16F"/>
+        <Border Grid.Row="8" Grid.Column="4" Background="#B88B4A"/>
+        <Border Grid.Row="8" Grid.Column="5" Background="#E3C16F"/>
+        <Border Grid.Row="8" Grid.Column="6" Background="#B88B4A"/>
+        <Border Grid.Row="8" Grid.Column="7" Background="#E3C16F"/>
+        <Border Grid.Row="8" Grid.Column="8" Background="#B88B4A"/>
     </Grid>
 </Window>
