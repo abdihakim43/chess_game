@@ -97,3 +97,41 @@ Track progress and tasks on our [Kanban board](https://github.com/users/abdihaki
 2. Make sure .NET 8 is installed  
 3. Build the solution (Ctrl + Shift + B)  
 4. Run the project (F5 or click Start)  
+
+## How to Run Unit Tests
+
+    Open the Solution: Open the solution in Visual Studio 2022.
+
+    Build the Project: Make sure the project is built by pressing Ctrl + Shift + B.
+
+    Open Test Explorer: Go to Test > Windows > Test Explorer in the Visual Studio menu.
+
+    Run Tests: In the Test Explorer window, click Run All to run all tests. Alternatively, you can right-click individual tests and run them.
+
+## How to Generate Code Coverage
+
+1. **Install Coverage Tools**: Make sure you have the **.NET Code Coverage** tool installed (Visual Studio includes it by default in most editions).  
+2. **Enable Code Coverage**:  
+   - Go to `Test > Analyze Code Coverage > All Tests`.  
+   - Visual Studio will build the project, run tests, and display coverage results.  
+3. **View Coverage Report**: After the tests finish running, a report will show up under **Code Coverage Results** with percentages and file breakdowns.  
+4. *(Optional)* You can export the results as XML or view it in a graphical format using third-party tools like [ReportGenerator](https://github.com/danielpalme/ReportGenerator).
+
+---
+
+## How to Run a Linter
+
+We recommend using **StyleCop Analyzers** for C# linting:
+
+1. **Install StyleCop**:
+   - Open the **NuGet Package Manager** for your main project.
+   - Search for `StyleCop.Analyzers` and install it.
+
+2. **Configure Rules (Optional)**:
+   - You can configure linting rules using a `stylecop.json` file or via an `.editorconfig` file.
+
+3. **View Warnings**:
+   - Linting warnings will appear in the **Error List** and **Warnings** tab in Visual Studio.
+   - Use Visual Studio’s quick fixes (`Ctrl + .`) to automatically correct some issues.
+
+---
