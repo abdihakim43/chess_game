@@ -40,6 +40,15 @@ namespace chess_game.Model
             // place white rooks (corners of row 7)
             Board[7, 0] = new Rook("White", new Position(7, 0));
             Board[7, 7] = new Rook("White", new Position(7, 7));
+
+            Board[7, 1] = new Knight("White", new Position(7, 1));
+            Board[7, 6] = new Knight("White", new Position(7, 6));
+            Board[0, 1] = new Knight("Black", new Position(0, 1));
+            Board[0, 6] = new Knight("Black", new Position(0, 6));
+
+            Board[7, 3] = new Queen("White", new Position(7, 3));
+            Board[0, 3] = new Queen("Black", new Position(0, 3));
+
         }
 
         public bool IsMoveValid(ChessPiece piece, Position newPosition) // a simple method which returns a bool T/F if it's a valid move.

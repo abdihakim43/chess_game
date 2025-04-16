@@ -10,6 +10,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using System.Windows.Media.Media3D;
 
 namespace chess_game
 {
@@ -41,6 +42,10 @@ namespace chess_game
                 Pawn p when p.Color == "Black" => "♟",
                 Rook r when r.Color == "White" => "♖",
                 Rook r when r.Color == "Black" => "♜",
+                Queen q when q.Color == "White" => "♕",
+                Queen q when q.Color == "Black" => "♛",
+                Knight k when k.Color == "White" => "♘",
+                Knight k when k.Color == "Black" => "♞",
                 _ => ""
             };
         }
