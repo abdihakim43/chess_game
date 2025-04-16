@@ -10,7 +10,7 @@ This is a chess game built as part of our Software Development course. The goal 
 
 ---
 
-## Group Members
+## Group Memberssss
 
 | **Name**              | **GitHub Username**    |
 |-----------------------|------------------------|
