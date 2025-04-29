@@ -42,13 +42,18 @@ namespace chess_game
                 Pawn p when p.Color == "Black" => "♟",
                 Rook r when r.Color == "White" => "♖",
                 Rook r when r.Color == "Black" => "♜",
-                Queen q when q.Color == "White" => "♕",
-                Queen q when q.Color == "Black" => "♛",
                 Knight k when k.Color == "White" => "♘",
                 Knight k when k.Color == "Black" => "♞",
+                Bishop b when b.Color == "White" => "♗",
+                Bishop b when b.Color == "Black" => "♝",
+                Queen q when q.Color == "White" => "♕",
+                Queen q when q.Color == "Black" => "♛",
+                King k when k.Color == "White" => "♔",
+                King k when k.Color == "Black" => "♚",
                 _ => ""
             };
         }
+
 
         private void BoardGrid_Click(object sender, MouseButtonEventArgs e)
         {
