@@ -33,23 +33,35 @@ namespace chess_game.Model
                 Board[6, col] = new Pawn("White", new Position(6, col));
             }
 
-            // place black rooks (corners of row 0)
+            // place black rooks
             Board[0, 0] = new Rook("Black", new Position(0, 0));
             Board[0, 7] = new Rook("Black", new Position(0, 7));
 
-            // place white rooks (corners of row 7)
+            // place white rooks
             Board[7, 0] = new Rook("White", new Position(7, 0));
             Board[7, 7] = new Rook("White", new Position(7, 7));
 
-            Board[7, 1] = new Knight("White", new Position(7, 1));
-            Board[7, 6] = new Knight("White", new Position(7, 6));
+            // place knights
             Board[0, 1] = new Knight("Black", new Position(0, 1));
             Board[0, 6] = new Knight("Black", new Position(0, 6));
+            Board[7, 1] = new Knight("White", new Position(7, 1));
+            Board[7, 6] = new Knight("White", new Position(7, 6));
 
-            Board[7, 3] = new Queen("White", new Position(7, 3));
+            // place bishops
+            Board[0, 2] = new Bishop("Black", new Position(0, 2));
+            Board[0, 5] = new Bishop("Black", new Position(0, 5));
+            Board[7, 2] = new Bishop("White", new Position(7, 2));
+            Board[7, 5] = new Bishop("White", new Position(7, 5));
+
+            // place queens
             Board[0, 3] = new Queen("Black", new Position(0, 3));
+            Board[7, 3] = new Queen("White", new Position(7, 3));
 
+            // place kings
+            Board[0, 4] = new King("Black", new Position(0, 4));
+            Board[7, 4] = new King("White", new Position(7, 4));
         }
+
 
         public bool IsMoveValid(ChessPiece piece, Position newPosition) // a simple method which returns a bool T/F if it's a valid move.
         {
