@@ -45,7 +45,41 @@ namespace chess_game
             };
         }
 
+        private void BoardGrid_Click(object sender, MouseButtonEventArgs e)
+        {
+            // Get the clicked element
+            var clickedElement = e.OriginalSource as FrameworkElement;
 
+            if (clickedElement != null)
+            {
+                // Get the row and column of the clicked element
+                int row = Grid.GetRow(clickedElement) - 1; // Adjust for grid labels (if any)
+                int column = Grid.GetColumn(clickedElement) - 1; // Adjust for grid labels (if any)
+
+                // Ensure the click is within the board bounds
+                if (row >= 0 && row < 8 && column >= 0 && column < 8)
+                {
+                    // Check if there is a chess piece at the clicked position
+                    var piece = chessBoard.Board[row, column];
+                    if (piece != null)
+                    {
+                        // Find the Border element at the clicked position
+                        var clickedBorder = boardGrid.Children
+                            .OfType<Border>()
+                            .FirstOrDefault(b => Grid.GetRow(b) == row + 1 && Grid.GetColumn(b) == column + 1);
+
+                        if (clickedBorder != null)
+                        {
+                            // Change the background color of the clicked cell to red
+                            clickedBorder.Background = new SolidColorBrush(Colors.Red);
+
+                            // Optional: Display a message box to confirm the click
+                            MessageBox.Show($"Clicked on Row: {row}, Column: {column}, Piece: {piece.GetType().Name}");
+                        }
+                    }
+                }
+            }
+        }
         private void DrawPieces()
         {
             // Remove old UI elements if needed (optional)
