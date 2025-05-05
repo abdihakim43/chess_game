@@ -135,3 +135,4 @@ We recommend using **StyleCop Analyzers** for C# linting:
    - Use Visual Studio’s quick fixes (`Ctrl + .`) to automatically correct some issues.
 
 ---
+[![.NET](https://github.com/abdihakim43/chess_game/actions/workflows/dotnet.yml/badge.svg)](https://github.com/abdihakim43/chess_game/actions/workflows/dotnet.yml)
