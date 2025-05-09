@@ -1,23 +1,22 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using chess_game.Model;
 
-namespace chess_game.Model
+public abstract class ChessPiece
 {
-    public abstract class ChessPiece
+    public string Color { get; set; }
+    public Position Position { get; set; }
+
+    public ChessPiece(string color, Position position)
     {
-        public string Color { get; set; } // white or black piece
-        public Position Position { get; set; } // current position on the board
+        Color = color;
+        Position = position;
+    }
 
-        public ChessPiece(string color, Position position) // constructor
-        {
-            Color = color;
-            Position = position;
-        }
+    // Each piece must define how it validates a move
+    public abstract bool IsMoveValid(Position newPosition, ChessBoard board);
 
-        // Abstract method to be overridden in subclasses for each piece's movement rules
-        public abstract bool IsMoveValid(Position newPosition, ChessBoard board);
+    // Each piece can override this to return its list of valid moves
+    public virtual List<(int, int)> GetValidMoves(ChessPiece[,] board, int row, int col)
+    {
+        return new List<(int, int)>();
     }
 }
