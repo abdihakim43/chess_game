@@ -71,12 +71,13 @@ namespace chess_game
 
                 if (row >= 0 && row < 8 && col >= 0 && col < 8)
                 {
-                    var piece = chessBoard.Board[row, col];
+                    var clickedPosition = new Position(row, col);
 
                     if (selectedPiece == null)
                     {
                         // Selecting a piece
-                        if (piece != null)
+                        var piece = chessBoard.Board[row, col];
+                        if (piece != null && piece.Color == chessBoard.CurrentPlayer) // Only allow selecting the current player's pieces
                         {
                             selectedPiece = piece;
                             selectedRow = row;
@@ -87,20 +88,16 @@ namespace chess_game
                     }
                     else
                     {
-                        var targetPosition = new Position(row, col);
-                        if (selectedPiece.IsMoveValid(targetPosition, chessBoard))
+                        // Attempt to move the piece
+                        var fromPosition = new Position(selectedRow, selectedCol);
+                        if (chessBoard.TryMovePiece(fromPosition, clickedPosition))
                         {
-                            chessBoard.Board[row, col] = selectedPiece;
-                            chessBoard.Board[selectedRow, selectedCol] = null;
-                            selectedPiece.Position = targetPosition;
-
-                            DrawPieces();
+                            DrawPieces(); // Redraw the board after a successful move
                         }
 
                         ClearHighlights();
                         selectedPiece = null;
                     }
-
                 }
             }
         }

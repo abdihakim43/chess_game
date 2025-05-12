@@ -10,6 +10,8 @@ namespace chess_game.Model
     public class ChessBoard
     {
         public ChessPiece[,] Board { get; set; } // 8x8 array of pieces
+        public string CurrentPlayer { get; private set; } = "White"; // White starts the game
+
         public ChessBoard() // the coonstructor to create a 8x8 grid 
         {
             Board = new ChessPiece[8, 8];
@@ -62,7 +64,29 @@ namespace chess_game.Model
             Board[7, 4] = new King("White", new Position(7, 4));
         }
 
+        public bool TryMovePiece(Position from, Position to)
+        {
+            var piece = Board[from.Row, from.Col];
+            if (piece == null || piece.Color != CurrentPlayer)
+            {
+                // Invalid move: no piece or not the current player's turn
+                return false;
+            }
 
+            if (piece.IsMoveValid(to, this))
+            {
+                // Move the piece
+                Board[to.Row, to.Col] = piece;
+                Board[from.Row, from.Col] = null;
+                piece.Position = to;
+
+                // Switch turn
+                CurrentPlayer = CurrentPlayer == "White" ? "Black" : "White";
+                return true;
+            }
+
+            return false; // Invalid move
+        }
         public bool IsMoveValid(ChessPiece piece, Position newPosition) // a simple method which returns a bool T/F if it's a valid move.
         {
             return piece.IsMoveValid(newPosition, this); 
