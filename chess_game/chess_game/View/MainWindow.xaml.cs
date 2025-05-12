@@ -29,12 +29,15 @@ namespace chess_game
         {
             InitializeComponent();
 
-
-
-            // create and initialize the board 
+            // Create and initialize the board
             chessBoard = new ChessBoard();
             chessBoard.InitializeBoard();
+            chessBoard.CheckmateOccurred += OnCheckmateOccurred; // Subscribe to the event
             DrawPieces();
+        }
+        private void OnCheckmateOccurred(string winner)
+        {
+            MessageBox.Show($"Checkmate! {winner} wins!", "Game Over", MessageBoxButton.OK, MessageBoxImage.Information);
         }
 
         private string GetPieceSymbol(ChessPiece piece)

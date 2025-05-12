@@ -11,7 +11,7 @@ namespace chess_game.Model
     {
         public ChessPiece[,] Board { get; set; } // 8x8 array of pieces
         public string CurrentPlayer { get; private set; } = "White"; // White starts the game
-
+        public event Action<string> CheckmateOccurred;
         public ChessBoard() // the coonstructor to create a 8x8 grid 
         {
             Board = new ChessPiece[8, 8];
@@ -69,19 +69,37 @@ namespace chess_game.Model
             var piece = Board[from.Row, from.Col];
             if (piece == null || piece.Color != CurrentPlayer)
             {
-                // Invalid move: no piece or not the current player's turn
-                return false;
+                return false; // Invalid move
             }
 
             if (piece.IsMoveValid(to, this))
             {
-                // Move the piece
+                // Simulate the move
+                var originalPiece = Board[to.Row, to.Col];
                 Board[to.Row, to.Col] = piece;
                 Board[from.Row, from.Col] = null;
                 piece.Position = to;
 
+                // Check if the move puts the current player's king in check
+                if (IsKingInCheck(CurrentPlayer))
+                {
+                    // Undo the move
+                    Board[from.Row, from.Col] = piece;
+                    Board[to.Row, to.Col] = originalPiece;
+                    piece.Position = from;
+                    return false; // Move is invalid because it leaves the king in check
+                }
+
                 // Switch turn
                 CurrentPlayer = CurrentPlayer == "White" ? "Black" : "White";
+
+                // Check for checkmate
+                if (IsCheckmate(CurrentPlayer))
+                {
+                    string winner = CurrentPlayer == "White" ? "Black" : "White"; // Determine the correct winner
+                    CheckmateOccurred?.Invoke(winner); // Raise the event with the correct winner
+                }
+
                 return true;
             }
 
@@ -90,6 +108,88 @@ namespace chess_game.Model
         public bool IsMoveValid(ChessPiece piece, Position newPosition) // a simple method which returns a bool T/F if it's a valid move.
         {
             return piece.IsMoveValid(newPosition, this); 
+        }
+        public bool IsKingInCheck(string kingColor)
+        {
+            // Find the king's position
+            Position kingPosition = null;
+            for (int row = 0; row < 8; row++)
+            {
+                for (int col = 0; col < 8; col++)
+                {
+                    var piece = Board[row, col];
+                    if (piece is King && piece.Color == kingColor)
+                    {
+                        kingPosition = new Position(row, col);
+                        break;
+                    }
+                }
+                if (kingPosition != null) break;
+            }
+
+            if (kingPosition == null)
+            {
+                throw new InvalidOperationException($"No {kingColor} king found on the board.");
+            }
+
+            // Check if any opponent piece can attack the king
+            string opponentColor = kingColor == "White" ? "Black" : "White";
+            for (int row = 0; row < 8; row++)
+            {
+                for (int col = 0; col < 8; col++)
+                {
+                    var piece = Board[row, col];
+                    if (piece != null && piece.Color == opponentColor)
+                    {
+                        if (piece.IsMoveValid(kingPosition, this))
+                        {
+                            return true; // King is in check
+                        }
+                    }
+                }
+            }
+
+            return false; // King is not in check
+        }
+        public bool IsCheckmate(string kingColor)
+        {
+            if (!IsKingInCheck(kingColor))
+            {
+                return false; // Not in check, so not in checkmate
+            }
+
+            // Check if any move can remove the check
+            for (int row = 0; row < 8; row++)
+            {
+                for (int col = 0; col < 8; col++)
+                {
+                    var piece = Board[row, col];
+                    if (piece != null && piece.Color == kingColor)
+                    {
+                        var validMoves = piece.GetValidMoves(Board, row, col);
+                        foreach (var move in validMoves)
+                        {
+                            // Simulate the move
+                            var originalPiece = Board[move.Item1, move.Item2];
+                            Board[move.Item1, move.Item2] = piece;
+                            Board[row, col] = null;
+
+                            bool isStillInCheck = IsKingInCheck(kingColor);
+
+                            // Undo the move
+                            Board[row, col] = piece;
+                            Board[move.Item1, move.Item2] = originalPiece;
+
+                            if (!isStillInCheck)
+                            {
+                                return false; // Found a move that removes the check
+                            }
+                        }
+                    }
+                }
+            }
+
+            return true; // No valid moves to remove the check
         }
     }
 }
