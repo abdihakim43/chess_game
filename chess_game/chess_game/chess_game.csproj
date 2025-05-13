@@ -9,7 +9,61 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="View\Images\gothic\bb.png" />
+    <None Remove="View\Images\gothic\bk.png" />
+    <None Remove="View\Images\gothic\bn.png" />
+    <None Remove="View\Images\gothic\bp.png" />
+    <None Remove="View\Images\gothic\bq.png" />
+    <None Remove="View\Images\gothic\br.png" />
+    <None Remove="View\Images\gothic\wb.png" />
+    <None Remove="View\Images\gothic\wk.png" />
+    <None Remove="View\Images\gothic\wn.png" />
+    <None Remove="View\Images\gothic\wp.png" />
+    <None Remove="View\Images\gothic\wq.png" />
+    <None Remove="View\Images\gothic\wr.png" />
+  </ItemGroup>
+
+  <ItemGroup>
     <Folder Include="ViewModel\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="View\Images\gothic\bb.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="View\Images\gothic\bk.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="View\Images\gothic\bn.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="View\Images\gothic\bp.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="View\Images\gothic\bq.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="View\Images\gothic\br.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="View\Images\gothic\wb.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="View\Images\gothic\wk.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="View\Images\gothic\wn.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="View\Images\gothic\wp.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="View\Images\gothic\wq.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="View\Images\gothic\wr.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
 
 </Project>
