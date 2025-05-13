@@ -29,52 +29,59 @@
             <ColumnDefinition Width="Auto"/>
         </Grid.ColumnDefinitions>
 
-        <TextBlock Grid.Row="0" Grid.Column="1" Text="a" HorizontalAlignment="Center" Margin="5"/>
-        <TextBlock Grid.Row="0" Grid.Column="2" Text="b" HorizontalAlignment="Center" Margin="5"/>
-        <TextBlock Grid.Row="0" Grid.Column="3" Text="c" HorizontalAlignment="Center" Margin="5"/>
-        <TextBlock Grid.Row="0" Grid.Column="4" Text="d" HorizontalAlignment="Center" Margin="5"/>
-        <TextBlock Grid.Row="0" Grid.Column="5" Text="e" HorizontalAlignment="Center" Margin="5"/>
-        <TextBlock Grid.Row="0" Grid.Column="6" Text="f" HorizontalAlignment="Center" Margin="5"/>
-        <TextBlock Grid.Row="0" Grid.Column="7" Text="g" HorizontalAlignment="Center" Margin="5"/>
-        <TextBlock Grid.Row="0" Grid.Column="8" Text="h" HorizontalAlignment="Center" Margin="5"/>
 
-        <TextBlock Grid.Row="9" Grid.Column="1" Text="a" HorizontalAlignment="Center" Margin="5"/>
-        <TextBlock Grid.Row="9" Grid.Column="2" Text="b" HorizontalAlignment="Center" Margin="5"/>
-        <TextBlock Grid.Row="9" Grid.Column="3" Text="c" HorizontalAlignment="Center" Margin="5"/>
-        <TextBlock Grid.Row="9" Grid.Column="4" Text="d" HorizontalAlignment="Center" Margin="5"/>
-        <TextBlock Grid.Row="9" Grid.Column="5" Text="e" HorizontalAlignment="Center" Margin="5"/>
-        <TextBlock Grid.Row="9" Grid.Column="6" Text="f" HorizontalAlignment="Center" Margin="5"/>
-        <TextBlock Grid.Row="9" Grid.Column="7" Text="g" HorizontalAlignment="Center" Margin="5"/>
-        <TextBlock Grid.Row="9" Grid.Column="8" Text="h" HorizontalAlignment="Center" Margin="5"/>
 
-        <TextBlock Grid.Row="1" Grid.Column="0" Text="8" VerticalAlignment="Center" Margin="5"/>
-        <TextBlock Grid.Row="2" Grid.Column="0" Text="7" VerticalAlignment="Center" Margin="5"/>
-        <TextBlock Grid.Row="3" Grid.Column="0" Text="6" VerticalAlignment="Center" Margin="5"/>
-        <TextBlock Grid.Row="4" Grid.Column="0" Text="5" VerticalAlignment="Center" Margin="5"/>
-        <TextBlock Grid.Row="5" Grid.Column="0" Text="4" VerticalAlignment="Center" Margin="5"/>
-        <TextBlock Grid.Row="6" Grid.Column="0" Text="3" VerticalAlignment="Center" Margin="5"/>
-        <TextBlock Grid.Row="7" Grid.Column="0" Text="2" VerticalAlignment="Center" Margin="5"/>
-        <TextBlock Grid.Row="8" Grid.Column="0" Text="1" VerticalAlignment="Center" Margin="5"/>
 
-        <TextBlock Grid.Row="1" Grid.Column="9" Text="8" VerticalAlignment="Center" Margin="5"/>
-        <TextBlock Grid.Row="2" Grid.Column="9" Text="7" VerticalAlignment="Center" Margin="5"/>
-        <TextBlock Grid.Row="3" Grid.Column="9" Text="6" VerticalAlignment="Center" Margin="5"/>
-        <TextBlock Grid.Row="4" Grid.Column="9" Text="5" VerticalAlignment="Center" Margin="5"/>
-        <TextBlock Grid.Row="5" Grid.Column="9" Text="4" VerticalAlignment="Center" Margin="5"/>
-        <TextBlock Grid.Row="6" Grid.Column="9" Text="3" VerticalAlignment="Center" Margin="5"/>
-        <TextBlock Grid.Row="7" Grid.Column="9" Text="2" VerticalAlignment="Center" Margin="5"/>
-        <TextBlock Grid.Row="8" Grid.Column="9" Text="1" VerticalAlignment="Center" Margin="5"/>
 
-        <Border Grid.Row="1" Grid.Column="1" Background="#B88B4A"/>
-        <Border Grid.Row="1" Grid.Column="2" Background="#E3C16F"/>
-        <Border Grid.Row="1" Grid.Column="3" Background="#B88B4A"/>
-        <Border Grid.Row="1" Grid.Column="4" Background="#E3C16F"/>
-        <Border Grid.Row="1" Grid.Column="5" Background="#B88B4A"/>
-        <Border Grid.Row="1" Grid.Column="6" Background="#E3C16F"/>
-        <Border Grid.Row="1" Grid.Column="7" Background="#B88B4A"/>
-        <Border Grid.Row="1" Grid.Column="8" Background="#E3C16F"/>
+        <Border Grid.Row="1" Grid.Column="1" Background="#B88B4A">
+            <Grid>
+                <!-- Number at the top-left -->
+                <TextBlock Text="8" FontSize="14" FontWeight="Bold" Foreground="Black" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="4"/>
+                <!-- Letter at the top-right -->
+                <TextBlock Text="a" FontSize="14" FontWeight="Bold" Foreground="Black" HorizontalAlignment="Right" VerticalAlignment="Top" Margin="4"/>
+            </Grid>
+        </Border>
+        <Border Grid.Row="1" Grid.Column="2" Background="#E3C16F">
+            <Grid>
+                <TextBlock Text="b" FontSize="14" FontWeight="Bold" Foreground="Black" HorizontalAlignment="right" VerticalAlignment="Top" Margin="4"/>
+            </Grid>
+        </Border>
+        <Border Grid.Row="1" Grid.Column="3" Background="#B88B4A">
+            <Grid>
+                <TextBlock Text="c" FontSize="14" FontWeight="Bold" Foreground="Black" HorizontalAlignment="right" VerticalAlignment="Top" Margin="4"/>
+            </Grid>
+        </Border>
+        <Border Grid.Row="1" Grid.Column="4" Background="#E3C16F">
+            <Grid>
+                <TextBlock Text="d" FontSize="14" FontWeight="Bold" Foreground="Black" HorizontalAlignment="right" VerticalAlignment="Top" Margin="4"/>
+            </Grid>
+        </Border>
+        <Border Grid.Row="1" Grid.Column="5" Background="#B88B4A">
+            <Grid>
+                <TextBlock Text="e" FontSize="14" FontWeight="Bold" Foreground="Black" HorizontalAlignment="right" VerticalAlignment="Top" Margin="4"/>
+            </Grid>
+        </Border>
+        <Border Grid.Row="1" Grid.Column="6" Background="#E3C16F">
+            <Grid>
+                <TextBlock Text="f" FontSize="14" FontWeight="Bold" Foreground="Black" HorizontalAlignment="right" VerticalAlignment="Top" Margin="4"/>
+            </Grid>
+        </Border>
+        <Border Grid.Row="1" Grid.Column="7" Background="#B88B4A">
+            <Grid>
+                <TextBlock Text="g" FontSize="14" FontWeight="Bold" Foreground="Black" HorizontalAlignment="right" VerticalAlignment="Top" Margin="4"/>
+            </Grid>
+        </Border>
+        <Border Grid.Row="1" Grid.Column="8" Background="#E3C16F">
+            <Grid>
+                <TextBlock Text="h" FontSize="14" FontWeight="Bold" Foreground="Black" HorizontalAlignment="right" VerticalAlignment="Top" Margin="4"/>
+            </Grid>
+        </Border>
 
-        <Border Grid.Row="2" Grid.Column="1" Background="#E3C16F"/>
+        <Border Grid.Row="2" Grid.Column="1" Background="#E3C16F">
+            <Grid>
+                <TextBlock Text="7" FontSize="14" FontWeight="Bold" Foreground="Black" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="4"/>
+            </Grid>
+        </Border>
         <Border Grid.Row="2" Grid.Column="2" Background="#B88B4A"/>
         <Border Grid.Row="2" Grid.Column="3" Background="#E3C16F"/>
         <Border Grid.Row="2" Grid.Column="4" Background="#B88B4A"/>
@@ -83,7 +90,11 @@
         <Border Grid.Row="2" Grid.Column="7" Background="#E3C16F"/>
         <Border Grid.Row="2" Grid.Column="8" Background="#B88B4A"/>
 
-        <Border Grid.Row="3" Grid.Column="1" Background="#B88B4A"/>
+        <Border Grid.Row="3" Grid.Column="1" Background="#B88B4A">
+            <Grid>
+                <TextBlock Text="6" FontSize="14" FontWeight="Bold" Foreground="Black" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="4"/>
+            </Grid>
+        </Border>
         <Border Grid.Row="3" Grid.Column="2" Background="#E3C16F"/>
         <Border Grid.Row="3" Grid.Column="3" Background="#B88B4A"/>
         <Border Grid.Row="3" Grid.Column="4" Background="#E3C16F"/>
@@ -92,7 +103,11 @@
         <Border Grid.Row="3" Grid.Column="7" Background="#B88B4A"/>
         <Border Grid.Row="3" Grid.Column="8" Background="#E3C16F"/>
 
-        <Border Grid.Row="4" Grid.Column="1" Background="#E3C16F"/>
+        <Border Grid.Row="4" Grid.Column="1" Background="#E3C16F">
+            <Grid>
+                <TextBlock Text="5" FontSize="14" FontWeight="Bold" Foreground="Black" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="4"/>
+            </Grid>
+        </Border>
         <Border Grid.Row="4" Grid.Column="2" Background="#B88B4A"/>
         <Border Grid.Row="4" Grid.Column="3" Background="#E3C16F"/>
         <Border Grid.Row="4" Grid.Column="4" Background="#B88B4A"/>
@@ -101,7 +116,11 @@
         <Border Grid.Row="4" Grid.Column="7" Background="#E3C16F"/>
         <Border Grid.Row="4" Grid.Column="8" Background="#B88B4A"/>
 
-        <Border Grid.Row="5" Grid.Column="1" Background="#B88B4A"/>
+        <Border Grid.Row="5" Grid.Column="1" Background="#B88B4A">
+            <Grid>
+                <TextBlock Text="4" FontSize="14" FontWeight="Bold" Foreground="Black" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="4"/>
+            </Grid>
+        </Border>
         <Border Grid.Row="5" Grid.Column="2" Background="#E3C16F"/>
         <Border Grid.Row="5" Grid.Column="3" Background="#B88B4A"/>
         <Border Grid.Row="5" Grid.Column="4" Background="#E3C16F"/>
@@ -110,7 +129,11 @@
         <Border Grid.Row="5" Grid.Column="7" Background="#B88B4A"/>
         <Border Grid.Row="5" Grid.Column="8" Background="#E3C16F"/>
 
-        <Border Grid.Row="6" Grid.Column="1" Background="#E3C16F"/>
+        <Border Grid.Row="6" Grid.Column="1" Background="#E3C16F">
+            <Grid>
+                <TextBlock Text="3" FontSize="14" FontWeight="Bold" Foreground="Black" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="4"/>
+            </Grid>
+        </Border>
         <Border Grid.Row="6" Grid.Column="2" Background="#B88B4A"/>
         <Border Grid.Row="6" Grid.Column="3" Background="#E3C16F"/>
         <Border Grid.Row="6" Grid.Column="4" Background="#B88B4A"/>
@@ -119,7 +142,11 @@
         <Border Grid.Row="6" Grid.Column="7" Background="#E3C16F"/>
         <Border Grid.Row="6" Grid.Column="8" Background="#B88B4A"/>
 
-        <Border Grid.Row="7" Grid.Column="1" Background="#B88B4A"/>
+        <Border Grid.Row="7" Grid.Column="1" Background="#B88B4A">
+            <Grid>
+                <TextBlock Text="2" FontSize="14" FontWeight="Bold" Foreground="Black" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="4"/>
+            </Grid>
+        </Border>
         <Border Grid.Row="7" Grid.Column="2" Background="#E3C16F"/>
         <Border Grid.Row="7" Grid.Column="3" Background="#B88B4A"/>
         <Border Grid.Row="7" Grid.Column="4" Background="#E3C16F"/>
@@ -128,7 +155,11 @@
         <Border Grid.Row="7" Grid.Column="7" Background="#B88B4A"/>
         <Border Grid.Row="7" Grid.Column="8" Background="#E3C16F"/>
 
-        <Border Grid.Row="8" Grid.Column="1" Background="#E3C16F"/>
+        <Border Grid.Row="8" Grid.Column="1" Background="#E3C16F">
+            <Grid>
+                <TextBlock Text="1" FontSize="14" FontWeight="Bold" Foreground="Black" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="4"/>
+            </Grid>
+        </Border>
         <Border Grid.Row="8" Grid.Column="2" Background="#B88B4A"/>
         <Border Grid.Row="8" Grid.Column="3" Background="#E3C16F"/>
         <Border Grid.Row="8" Grid.Column="4" Background="#B88B4A"/>
