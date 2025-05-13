@@ -1,18 +1,13 @@
 ﻿using chess_game.Model.ChessPieces;
 using chess_game.Model;
-using System.Text;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
-using System.Windows.Media.Media3D;
 using System.IO; // Add this namespace for File operations
 using Path = System.IO.Path; // Resolve ambiguity by aliasing System.IO.Path
+
 
 
 namespace chess_game
@@ -169,9 +164,14 @@ namespace chess_game
                 _ => ""
             };
 
-            // Return relative path (will resolve via WPF resource loading)
-            return $"gothic/{colorPrefix}{pieceSuffix}.png";
+            // Get path relative to executable
+            string exePath = AppContext.BaseDirectory;
+            string imageFolder = Path.Combine(exePath, "Images", "gothic");
+            string imagePath = Path.Combine(imageFolder, $"{colorPrefix}{pieceSuffix}.png");
+
+            return imagePath;
         }
+
 
 
 
