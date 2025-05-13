@@ -266,5 +266,6 @@ namespace chess_game.Model
 
             return true; // No valid moves to remove the check
         }
+        
     }
 }

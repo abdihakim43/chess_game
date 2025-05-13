@@ -9,7 +9,110 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="Images\gothic\bb.png" />
+    <None Remove="Images\gothic\bk.png" />
+    <None Remove="Images\gothic\bn.png" />
+    <None Remove="Images\gothic\bp.png" />
+    <None Remove="Images\gothic\bq.png" />
+    <None Remove="Images\gothic\br.png" />
+    <None Remove="Images\gothic\wb.png" />
+    <None Remove="Images\gothic\wk.png" />
+    <None Remove="Images\gothic\wn.png" />
+    <None Remove="Images\gothic\wp.png" />
+    <None Remove="Images\gothic\wq.png" />
+    <None Remove="Images\gothic\wr.png" />
+    <None Remove="View\gothic\bb.png" />
+    <None Remove="View\gothic\bk.png" />
+    <None Remove="View\gothic\bn.png" />
+    <None Remove="View\gothic\bp.png" />
+    <None Remove="View\gothic\bq.png" />
+    <None Remove="View\gothic\br.png" />
+    <None Remove="View\gothic\wb.png" />
+    <None Remove="View\gothic\wk.png" />
+    <None Remove="View\gothic\wn.png" />
+    <None Remove="View\gothic\wp.png" />
+    <None Remove="View\gothic\wq.png" />
+    <None Remove="View\gothic\wr.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="NewFolder\" />
     <Folder Include="ViewModel\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="Images\gothic\bb.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Images\gothic\bk.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Images\gothic\bn.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Images\gothic\bp.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Images\gothic\bq.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Images\gothic\br.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Images\gothic\wb.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Images\gothic\wk.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Images\gothic\wn.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Images\gothic\wp.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Images\gothic\wq.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Images\gothic\wr.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="View\gothic\bb.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="View\gothic\bk.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="View\gothic\bn.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="View\gothic\bp.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="View\gothic\bq.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="View\gothic\br.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="View\gothic\wb.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="View\gothic\wk.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="View\gothic\wn.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="View\gothic\wp.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="View\gothic\wq.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="View\gothic\wr.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
 
 </Project>
