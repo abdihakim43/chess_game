@@ -6,7 +6,7 @@ namespace chess_game.Model.ChessPieces
     public class King : ChessPiece
     {
         public King(string color, Position position) : base(color, position) { }
-
+        public bool HasMoved { get; set; } = false; // Track if the king has moved for castling kingside
         public override bool IsMoveValid(Position newPosition, ChessBoard board)
         {
             int rowDiff = Math.Abs(newPosition.Row - Position.Row);

@@ -6,7 +6,7 @@ namespace chess_game.Model.ChessPieces
     public class Rook : ChessPiece
     {
         public Rook(string color, Position position) : base(color, position) { }
-
+        public bool HasMoved { get; set; } = false; // Track if the rook has moved for castling kingside 
         public override bool IsMoveValid(Position newPosition, ChessBoard board)
         {
             int currentRow = Position.Row;

@@ -72,6 +72,81 @@ namespace chess_game.Model
                 return false; // Invalid move
             }
 
+            // General logic for kingside castling
+            if ((piece is King king && !king.HasMoved) ||
+                (piece is Rook rook && !rook.HasMoved))
+            {
+                // Find the king and rook on the same row
+                var row = from.Row;
+                king = Board[row, 4] as King; // King is always at column 4
+                rook = Board[row, 7] as Rook; // Rook is always at column 7
+
+                if (king != null && rook != null && !king.HasMoved && !rook.HasMoved)
+                {
+                    // Ensure squares between the king and rook are empty
+                    if (Board[row, 5] == null && Board[row, 6] == null)
+                    {
+                        // Ensure the king is not in check and does not pass through check
+                        if (!IsKingInCheck(CurrentPlayer))
+                        {
+                            // Perform castling kingside
+                            Board[row, 6] = king; // Move the king to column 6
+                            Board[row, 4] = null; // Clear the king's original position
+                            king.Position = new Position(row, 6);
+
+                            Board[row, 5] = rook; // Move the rook to column 5
+                            Board[row, 7] = null; // Clear the rook's original position
+                            rook.Position = new Position(row, 5);
+
+                            king.HasMoved = true;
+                            rook.HasMoved = true;
+
+                            // Switch turn
+                            CurrentPlayer = CurrentPlayer == "White" ? "Black" : "White";
+
+                            return true; // Castling successful
+                        }
+                    }
+                }
+            }
+            // General logic for queenside castling
+            if ((piece is King) || (piece is Rook))
+            {
+                var row = from.Row;
+                var queensideKing = Board[row, 4] as King; // King's initial position
+                var queensideRook = Board[row, 0] as Rook; // Queenside rook at column 0
+
+                if (queensideKing != null && queensideRook != null &&
+                    !queensideKing.HasMoved && !queensideRook.HasMoved)
+                {
+                    // Ensure squares between king and rook are empty (columns 1, 2, 3)
+                    if (Board[row, 1] == null && Board[row, 2] == null && Board[row, 3] == null)
+                    {
+                        // Ensure the king is not in check and does not pass through check
+                        if (!IsKingInCheck(CurrentPlayer))
+                        {
+                            // Perform queenside castling
+                            Board[row, 2] = queensideKing; // Move king to column 2 (c1/c8)
+                            Board[row, 4] = null;
+                            queensideKing.Position = new Position(row, 2);
+
+                            Board[row, 3] = queensideRook; // Move rook to column 3 (d1/d8)
+                            Board[row, 0] = null;
+                            queensideRook.Position = new Position(row, 3);
+
+                            queensideKing.HasMoved = true;
+                            queensideRook.HasMoved = true;
+
+                            // Switch turn
+                            CurrentPlayer = CurrentPlayer == "White" ? "Black" : "White";
+
+                            return true; // Queenside castling successful
+                        }
+                    }
+                }
+            }
+
+            // Handle normal moves
             if (piece.IsMoveValid(to, this))
             {
                 // Simulate the move
