@@ -22,11 +22,18 @@ namespace chess_game.View
         {
             InitializeComponent();
             WinnerMessage.Text = $"{winner} is in checkmate! Game over.";
+
+            // Subscribe to the Closed event
+            this.Closed += WinnerWindow_Closed;
         }
-        private void OnCheckmateOccurred(string winner)
+
+        private void WinnerWindow_Closed(object? sender, System.EventArgs e)
         {
-            var winnerWindow = new WinnerWindow(winner);
-            winnerWindow.ShowDialog(); // Open the window as a modal dialog
+            // Restart the game by calling ResetGame in MainWindow
+            if (Application.Current.MainWindow is MainWindow mainWindow)
+            {
+                mainWindow.ResetGame();
+            }
         }
     }
 }

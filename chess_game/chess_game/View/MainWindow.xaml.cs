@@ -37,7 +37,9 @@ namespace chess_game
         }
         private void OnCheckmateOccurred(string winner)
         {
-            MessageBox.Show($"Checkmate! {winner} wins!", "Game Over", MessageBoxButton.OK, MessageBoxImage.Information);
+            // Create and display the WinnerWindow
+            var winnerWindow = new chess_game.View.WinnerWindow(winner);
+            winnerWindow.ShowDialog(); // Show the window as a modal dialog
         }
 
         private string GetPieceSymbol(ChessPiece piece)
@@ -180,6 +182,13 @@ namespace chess_game
                     }
                 }
             }
+        }
+        public void ResetGame()
+        {
+            // Clear the board, reset pieces, and start a new game
+            
+            chessBoard.InitializeBoard();
+            DrawPieces();
         }
 
     }
