@@ -95,6 +95,11 @@ namespace chess_game
                     {
                         // Attempt to move the piece
                         var fromPosition = new Position(selectedRow, selectedCol);
+
+
+
+
+                        // Handle normal moves
                         if (chessBoard.TryMovePiece(fromPosition, clickedPosition))
                         {
                             DrawPieces(); // Redraw the board after a successful move
@@ -186,7 +191,7 @@ namespace chess_game
         public void ResetGame()
         {
             // Clear the board, reset pieces, and start a new game
-            
+
             chessBoard.InitializeBoard();
             DrawPieces();
         }
