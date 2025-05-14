@@ -10,6 +10,7 @@ using System.Windows.Media;
 using System.Windows.Media.Animation;
 using System.Windows.Media.Imaging;
 using Path = System.IO.Path;
+using chess_game.View;
 
 namespace chess_game
 {
@@ -66,7 +67,11 @@ namespace chess_game
                         if (chessBoard.TryMovePiece(fromPosition, clickedPosition))
                         {
                             AnimateMove(fromPosition, clickedPosition);
+
+                            // 🔑 Check for promotion right after the move
+                            CheckForPawnPromotion(clickedPosition);
                         }
+
 
                         ClearHighlights();
                         selectedPiece = null;
@@ -204,6 +209,52 @@ namespace chess_game
         {
             chessBoard.InitializeBoard();
             DrawPieces();
+        }
+
+        private void OnPawnPromotion(Position pawnPosition)
+        {
+            // Determine the color of the pawn
+            string pawnColor = chessBoard.Board[pawnPosition.Row, pawnPosition.Col].Color;
+
+            // Open the PawnConverterWindow
+            PawnConverterWindow pawnConverterWindow = new PawnConverterWindow(chessBoard, pawnPosition, pawnColor)
+            {
+                Owner = this // Set the owner of the window
+            };
+            pawnConverterWindow.ShowDialog(); // Use ShowDialog for modal behavior
+
+            DrawPieces();
+        }
+
+        private void CheckForPawnPromotion(Position to)
+        {
+            ChessPiece piece = chessBoard.Board[to.Row, to.Col];
+
+            // Check if the piece is a pawn and has reached the last row
+            if (piece is Pawn && ((piece.Color == "White" && to.Row == 0) || (piece.Color == "Black" && to.Row == 7)))
+            {
+                OnPawnPromotion(to);
+            }
+        }
+
+        // Update the TryMovePiece logic to include pawn promotion check
+        public bool TryMovePiece(Position from, Position to)
+        {
+            if (chessBoard.IsMoveValid(chessBoard.Board[from.Row, from.Col], to))
+            {
+                // Move the piece
+                chessBoard.Board[to.Row, to.Col] = chessBoard.Board[from.Row, from.Col];
+                chessBoard.Board[from.Row, from.Col] = null;
+
+                // Update the piece's position
+                chessBoard.Board[to.Row, to.Col].Position = to;
+
+                // Check for pawn promotion
+                CheckForPawnPromotion(to); // Ensure this is being called
+
+                return true;
+            }
+            return false;
         }
     }
 }

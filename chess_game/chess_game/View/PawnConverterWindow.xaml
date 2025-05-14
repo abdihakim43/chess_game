@@ -1,0 +1,27 @@
+﻿<Window x:Class="chess_game.View.PawnConverterWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Pawn Promotion"
+        Height="250" Width="400"
+        WindowStartupLocation="CenterOwner"
+        ResizeMode="NoResize">
+
+
+    <Grid>
+        <!-- Title -->
+        <TextBlock HorizontalAlignment="Center" VerticalAlignment="Top" FontSize="24" Margin="0,20,0,0">Select Piece for Pawn Conversion</TextBlock>
+
+        <!-- ComboBox to choose the piece -->
+        <ComboBox x:Name="PieceComboBox" HorizontalAlignment="Center" VerticalAlignment="Center" Width="200" Height="40" Margin="0,0,0,20">
+            <ComboBoxItem Content="Queen"/>
+            <ComboBoxItem Content="Rook"/>
+            <ComboBoxItem Content="Bishop"/>
+            <ComboBoxItem Content="Knight"/>
+        </ComboBox>
+
+        <Button Content="Convert Pawn" HorizontalAlignment="Center" VerticalAlignment="Bottom" Width="150" Height="40" Margin="0,0,0,20" Click="ConvertPawnButton_Click"/>
+
+        <!-- Button to confirm the choice -->
+        <Button Content="Convert Pawn" HorizontalAlignment="Center" VerticalAlignment="Bottom" Width="150" Height="40" Margin="0,0,0,20" Click="ConvertPawnButton_Click"/>
+    </Grid>
+</Window>
