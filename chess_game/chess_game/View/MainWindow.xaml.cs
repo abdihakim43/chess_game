@@ -1,75 +1,45 @@
-﻿using chess_game.Model.ChessPieces;
-using chess_game.Model;
+﻿using chess_game.Model;
+using chess_game.Model.ChessPieces;
+using System;
+using System.IO;
+using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
 using System.Windows.Media;
+using System.Windows.Media.Animation;
 using System.Windows.Media.Imaging;
-using System.IO; // Add this namespace for File operations
-using Path = System.IO.Path; // Resolve ambiguity by aliasing System.IO.Path
-
-
+using Path = System.IO.Path;
 
 namespace chess_game
 {
-    /// <summary>
-    /// Interaction logic for MainWindow.xaml
-    /// </summary>
     public partial class MainWindow : Window
     {
         private ChessPiece selectedPiece;
         private int selectedRow = -1;
         private int selectedCol = -1;
-
         private ChessBoard chessBoard;
 
         public MainWindow()
         {
             InitializeComponent();
-
-            // Create and initialize the board
             chessBoard = new ChessBoard();
             chessBoard.InitializeBoard();
-            chessBoard.CheckmateOccurred += OnCheckmateOccurred; // Subscribe to the event
+            chessBoard.CheckmateOccurred += OnCheckmateOccurred;
             DrawPieces();
-
-
         }
+
         private void OnCheckmateOccurred(string winner)
         {
-            // Create and display the WinnerWindow
             var winnerWindow = new chess_game.View.WinnerWindow(winner);
-            winnerWindow.ShowDialog(); // Show the window as a modal dialog
+            winnerWindow.ShowDialog();
         }
-
-        private string GetPieceSymbol(ChessPiece piece)
-        {
-            return piece switch
-            {
-                Pawn p when p.Color == "White" => "",
-                Pawn p when p.Color == "Black" => "♟",
-                Rook r when r.Color == "White" => "♖",
-                Rook r when r.Color == "Black" => "♜",
-                Knight k when k.Color == "White" => "♘",
-                Knight k when k.Color == "Black" => "♞",
-                Bishop b when b.Color == "White" => "♗",
-                Bishop b when b.Color == "Black" => "♝",
-                Queen q when q.Color == "White" => "♕",
-                Queen q when q.Color == "Black" => "♛",
-                King k when k.Color == "White" => "♔",
-                King k when k.Color == "Black" => "♚",
-                _ => ""
-            };
-        }
-
 
         private void BoardGrid_Click(object sender, MouseButtonEventArgs e)
         {
-            // Clear previous highlights
             ClearHighlights();
 
-            var clickedElement = e.OriginalSource as FrameworkElement;
-            if (clickedElement != null)
+            if (e.OriginalSource is FrameworkElement clickedElement)
             {
                 int row = Grid.GetRow(clickedElement) - 1;
                 int col = Grid.GetColumn(clickedElement) - 1;
@@ -80,29 +50,22 @@ namespace chess_game
 
                     if (selectedPiece == null)
                     {
-                        // Selecting a piece
                         var piece = chessBoard.Board[row, col];
-                        if (piece != null && piece.Color == chessBoard.CurrentPlayer) // Only allow selecting the current player's pieces
+                        if (piece != null && piece.Color == chessBoard.CurrentPlayer)
                         {
                             selectedPiece = piece;
                             selectedRow = row;
                             selectedCol = col;
-
                             HighlightMoves(piece, row, col);
                         }
                     }
                     else
                     {
-                        // Attempt to move the piece
                         var fromPosition = new Position(selectedRow, selectedCol);
 
-
-
-
-                        // Handle normal moves
                         if (chessBoard.TryMovePiece(fromPosition, clickedPosition))
                         {
-                            DrawPieces(); // Redraw the board after a successful move
+                            AnimateMove(fromPosition, clickedPosition);
                         }
 
                         ClearHighlights();
@@ -110,6 +73,36 @@ namespace chess_game
                     }
                 }
             }
+        }
+
+        private void AnimateMove(Position from, Position to)
+        {
+            var image = boardGrid.Children
+                .OfType<Image>()
+                .FirstOrDefault(img => Grid.GetRow(img) == from.Row + 1 && Grid.GetColumn(img) == from.Col + 1);
+
+            if (image == null)
+            {
+                DrawPieces(); // fallback
+                return;
+            }
+
+            double cellSize = 60;
+            double deltaX = (to.Col - from.Col) * cellSize;
+            double deltaY = (to.Row - from.Row) * cellSize;
+
+            var transform = new TranslateTransform();
+            image.RenderTransform = transform;
+
+            var animX = new DoubleAnimation(0, deltaX, TimeSpan.FromMilliseconds(800));
+            var animY = new DoubleAnimation(0, deltaY, TimeSpan.FromMilliseconds(800));
+            animX.FillBehavior = FillBehavior.Stop;
+            animY.FillBehavior = FillBehavior.Stop;
+
+            animY.Completed += (s, e) => DrawPieces(); // Only redraw after animation completes
+
+            transform.BeginAnimation(TranslateTransform.XProperty, animX);
+            transform.BeginAnimation(TranslateTransform.YProperty, animY);
         }
 
         private void HighlightMoves(ChessPiece piece, int row, int col)
@@ -131,7 +124,6 @@ namespace chess_game
             }
         }
 
-
         private void ClearHighlights()
         {
             for (int row = 0; row < 8; row++)
@@ -150,6 +142,7 @@ namespace chess_game
                 }
             }
         }
+
         private string GetPieceImagePath(ChessPiece piece)
         {
             string colorPrefix = piece.Color == "White" ? "w" : "b";
@@ -164,21 +157,14 @@ namespace chess_game
                 _ => ""
             };
 
-            // Get path relative to executable
             string exePath = AppContext.BaseDirectory;
             string imageFolder = Path.Combine(exePath, "Images", "gothic");
-            string imagePath = Path.Combine(imageFolder, $"{colorPrefix}{pieceSuffix}.png");
-
-            return imagePath;
+            return Path.Combine(imageFolder, $"{colorPrefix}{pieceSuffix}.png");
         }
-
-
-
-
 
         private void DrawPieces()
         {
-            // Remove old piece images (but leave the background)
+            // Remove existing images
             var oldImages = boardGrid.Children.OfType<Image>().ToList();
             foreach (var img in oldImages)
             {
@@ -193,12 +179,7 @@ namespace chess_game
                     if (piece != null)
                     {
                         string imagePath = GetPieceImagePath(piece);
-
-                        if (!File.Exists(imagePath))
-                        {
-                            MessageBox.Show($"Image not found: {imagePath}");
-                            continue;
-                        }
+                        if (!File.Exists(imagePath)) continue;
 
                         var image = new Image
                         {
@@ -209,10 +190,8 @@ namespace chess_game
                             VerticalAlignment = VerticalAlignment.Center
                         };
 
-                        Grid.SetRow(image, row + 1);    // +1 if you have row/col labels
-                        Grid.SetColumn(image, col + 1); // +1 if you have row/col labels
-
-                        // Make sure the piece image renders on top of the square
+                        Grid.SetRow(image, row + 1);
+                        Grid.SetColumn(image, col + 1);
                         Panel.SetZIndex(image, 1);
 
                         boardGrid.Children.Add(image);
@@ -221,15 +200,10 @@ namespace chess_game
             }
         }
 
-
-
         public void ResetGame()
         {
-            // Clear the board, reset pieces, and start a new game
-
             chessBoard.InitializeBoard();
             DrawPieces();
         }
-
     }
 }
