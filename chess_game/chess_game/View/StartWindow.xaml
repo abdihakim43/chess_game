@@ -1,0 +1,16 @@
+<Window x:Class="chess_game.View.StartWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Chess Game" Height="400" Width="300" WindowStartupLocation="CenterScreen"
+        Background="#FF2B2B2B">
+    <Grid>
+        <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center">
+            <TextBlock Text="Choose Game Mode" Foreground="White" FontSize="24" 
+                       HorizontalAlignment="Center" Margin="0,0,0,20"/>
+
+            <Button Content="Player vs Player (PvP)" Width="180" Height="40" Margin="0,0,0,10" Click="PvP_Click"/>
+            <Button Content="Player vs Computer (PvE)" Width="180" Height="40" Margin="0,0,0,10" Click="PvE_Click"/>
+            <Button Content="Exit" Width="180" Height="40" Click="Exit_Click"/>
+        </StackPanel>
+    </Grid>
+</Window>

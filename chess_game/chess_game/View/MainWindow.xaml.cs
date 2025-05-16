@@ -20,10 +20,13 @@ namespace chess_game
         private int selectedRow = -1;
         private int selectedCol = -1;
         private ChessBoard chessBoard;
+        private string gameMode; // 👈 Added: store PvP or PvE mode
 
-        public MainWindow()
+        public MainWindow(string mode)
         {
             InitializeComponent();
+            gameMode = mode; // 👈 store selected mode
+
             chessBoard = new ChessBoard();
             chessBoard.InitializeBoard();
             chessBoard.CheckmateOccurred += OnCheckmateOccurred;
@@ -32,7 +35,7 @@ namespace chess_game
 
         private void OnCheckmateOccurred(string winner)
         {
-            var winnerWindow = new chess_game.View.WinnerWindow(winner);
+            var winnerWindow = new WinnerWindow(winner);
             winnerWindow.ShowDialog();
         }
 
@@ -67,14 +70,49 @@ namespace chess_game
                         if (chessBoard.TryMovePiece(fromPosition, clickedPosition))
                         {
                             AnimateMove(fromPosition, clickedPosition);
-
-                            // 🔑 Check for promotion right after the move
                             CheckForPawnPromotion(clickedPosition);
-                        }
 
+                            ClearHighlights();
+                            selectedPiece = null;
+
+                            // If PvE and it's now the bot's turn
+                            if (gameMode == "PvE" && chessBoard.CurrentPlayer == "Black")
+                            {
+                                BotMakeMove();
+                            }
+                            return;
+                        }
 
                         ClearHighlights();
                         selectedPiece = null;
+                    }
+                }
+            }
+        }
+
+        private void BotMakeMove()
+        {
+            // 🧠 Simple bot: pick first valid move
+            for (int r = 0; r < 8; r++)
+            {
+                for (int c = 0; c < 8; c++)
+                {
+                    var piece = chessBoard.Board[r, c];
+                    if (piece != null && piece.Color == "Black")
+                    {
+                        var moves = piece.GetValidMoves(chessBoard.Board, r, c);
+                        foreach (var move in moves)
+                        {
+                            Position from = new Position(r, c);
+                            Position to = new Position(move.Item1, move.Item2);
+
+                            if (chessBoard.TryMovePiece(from, to))
+                            {
+                                AnimateMove(from, to);
+                                CheckForPawnPromotion(to);
+                                return;
+                            }
+                        }
                     }
                 }
             }
@@ -104,7 +142,7 @@ namespace chess_game
             animX.FillBehavior = FillBehavior.Stop;
             animY.FillBehavior = FillBehavior.Stop;
 
-            animY.Completed += (s, e) => DrawPieces(); // Only redraw after animation completes
+            animY.Completed += (s, e) => DrawPieces();
 
             transform.BeginAnimation(TranslateTransform.XProperty, animX);
             transform.BeginAnimation(TranslateTransform.YProperty, animY);
@@ -169,7 +207,6 @@ namespace chess_game
 
         private void DrawPieces()
         {
-            // Remove existing images
             var oldImages = boardGrid.Children.OfType<Image>().ToList();
             foreach (var img in oldImages)
             {
@@ -213,45 +250,32 @@ namespace chess_game
 
         private void OnPawnPromotion(Position pawnPosition)
         {
-            // Determine the color of the pawn
             string pawnColor = chessBoard.Board[pawnPosition.Row, pawnPosition.Col].Color;
-
-            // Open the PawnConverterWindow
             PawnConverterWindow pawnConverterWindow = new PawnConverterWindow(chessBoard, pawnPosition, pawnColor)
             {
-                Owner = this // Set the owner of the window
+                Owner = this
             };
-            pawnConverterWindow.ShowDialog(); // Use ShowDialog for modal behavior
-
+            pawnConverterWindow.ShowDialog();
             DrawPieces();
         }
 
         private void CheckForPawnPromotion(Position to)
         {
             ChessPiece piece = chessBoard.Board[to.Row, to.Col];
-
-            // Check if the piece is a pawn and has reached the last row
             if (piece is Pawn && ((piece.Color == "White" && to.Row == 0) || (piece.Color == "Black" && to.Row == 7)))
             {
                 OnPawnPromotion(to);
             }
         }
 
-        // Update the TryMovePiece logic to include pawn promotion check
         public bool TryMovePiece(Position from, Position to)
         {
             if (chessBoard.IsMoveValid(chessBoard.Board[from.Row, from.Col], to))
             {
-                // Move the piece
                 chessBoard.Board[to.Row, to.Col] = chessBoard.Board[from.Row, from.Col];
                 chessBoard.Board[from.Row, from.Col] = null;
-
-                // Update the piece's position
                 chessBoard.Board[to.Row, to.Col].Position = to;
-
-                // Check for pawn promotion
-                CheckForPawnPromotion(to); // Ensure this is being called
-
+                CheckForPawnPromotion(to);
                 return true;
             }
             return false;

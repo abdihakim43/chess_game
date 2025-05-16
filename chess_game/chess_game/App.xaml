@@ -1,8 +1,7 @@
 ﻿<Application x:Class="chess_game.App"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-             xmlns:local="clr-namespace:chess_game"
-             StartupUri="View/MainWindow.xaml">
+             StartupUri="View/StartWindow.xaml">
     <Application.Resources>
 
     </Application.Resources>
