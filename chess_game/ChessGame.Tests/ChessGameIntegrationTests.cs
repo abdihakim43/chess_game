@@ -4,10 +4,12 @@ using chess_game;
 using chess_game.Model;
 using chess_game.Model.ChessPieces;
 using NUnit.Framework;
+using System.Threading;
 
 namespace ChessGame.Tests
 {
     [TestFixture]
+    [Apartment(ApartmentState.STA)]
     public class ChessGameIntegrationTests
     {
         [Test]
