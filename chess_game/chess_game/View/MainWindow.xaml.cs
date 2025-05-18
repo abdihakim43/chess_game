@@ -39,7 +39,8 @@ namespace chess_game
             winnerWindow.ShowDialog();
         }
 
-        private void BoardGrid_Click(object sender, MouseButtonEventArgs e)
+        // 2. Update BoardGrid_Click to call BotMakeMove with await
+        private async void BoardGrid_Click(object sender, MouseButtonEventArgs e)
         {
             ClearHighlights();
 
@@ -78,7 +79,7 @@ namespace chess_game
                             // If PvE and it's now the bot's turn
                             if (gameMode == "PvE" && chessBoard.CurrentPlayer == "Black")
                             {
-                                BotMakeMove();
+                                await BotMakeMove(); // <-- Await the async method
                             }
                             return;
                         }
@@ -90,8 +91,13 @@ namespace chess_game
             }
         }
 
-        private void BotMakeMove()
+        // In MainWindow.xaml.cs
+
+        // 1. Update BotMakeMove to async Task
+        private async Task BotMakeMove()
         {
+            await Task.Delay(1500); // Wait 1.5 seconds before making the move
+
             // 🧠 Simple bot: pick first valid move
             for (int r = 0; r < 8; r++)
             {
