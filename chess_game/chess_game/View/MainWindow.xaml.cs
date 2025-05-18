@@ -21,6 +21,8 @@ namespace chess_game
         private int selectedCol = -1;
         private ChessBoard chessBoard;
         private string gameMode; // 👈 Added: store PvP or PvE mode
+        private Position lastAIMoveFrom = null;
+        private Position lastAIMoveTo = null;
 
         public MainWindow(string mode)
         {
@@ -98,7 +100,10 @@ namespace chess_game
         {
             await Task.Delay(1500); // Wait 1.5 seconds before making the move
 
-            // 🧠 Simple bot: pick first valid move
+            int bestScore = int.MinValue;
+            Position bestFrom = null;
+            Position bestTo = null;
+
             for (int r = 0; r < 8; r++)
             {
                 for (int c = 0; c < 8; c++)
@@ -112,14 +117,49 @@ namespace chess_game
                             Position from = new Position(r, c);
                             Position to = new Position(move.Item1, move.Item2);
 
-                            if (chessBoard.TryMovePiece(from, to))
+                            // Skip if this move is just undoing the last AI move
+                            if (lastAIMoveFrom != null && lastAIMoveTo != null &&
+                                from.Row == lastAIMoveTo.Row && from.Col == lastAIMoveTo.Col &&
+                                to.Row == lastAIMoveFrom.Row && to.Col == lastAIMoveFrom.Col)
                             {
-                                AnimateMove(from, to);
-                                CheckForPawnPromotion(to);
-                                return;
+                                continue;
+                            }
+
+                            // Simulate move
+                            var captured = chessBoard.Board[to.Row, to.Col];
+                            chessBoard.Board[to.Row, to.Col] = piece;
+                            chessBoard.Board[r, c] = null;
+                            var originalPos = piece.Position;
+                            piece.Position = to;
+
+                            int score = EvaluateBoard();
+
+                            // Undo move
+                            chessBoard.Board[r, c] = piece;
+                            chessBoard.Board[to.Row, to.Col] = captured;
+                            piece.Position = originalPos;
+
+                            if (score > bestScore)
+                            {
+                                bestScore = score;
+                                bestFrom = from;
+                                bestTo = to;
                             }
                         }
                     }
+                }
+            }
+
+            if (bestFrom != null && bestTo != null)
+            {
+                if (chessBoard.TryMovePiece(bestFrom, bestTo))
+                {
+                    AnimateMove(bestFrom, bestTo);
+                    CheckForPawnPromotion(bestTo);
+
+                    // Update last AI move
+                    lastAIMoveFrom = bestFrom;
+                    lastAIMoveTo = bestTo;
                 }
             }
         }
@@ -285,6 +325,33 @@ namespace chess_game
                 return true;
             }
             return false;
+        }
+        // Simple evaluation: positive is good for Black, negative is good for White
+        private int EvaluateBoard()
+        {
+            int score = 0;
+            for (int r = 0; r < 8; r++)
+            {
+                for (int c = 0; c < 8; c++)
+                {
+                    var piece = chessBoard.Board[r, c];
+                    if (piece != null)
+                    {
+                        int value = piece switch
+                        {
+                            Pawn => 1,
+                            Knight => 3,
+                            Bishop => 3,
+                            Rook => 5,
+                            Queen => 9,
+                            King => 100,
+                            _ => 0
+                        };
+                        score += (piece.Color == "Black" ? value : -value);
+                    }
+                }
+            }
+            return score;
         }
     }
 }
