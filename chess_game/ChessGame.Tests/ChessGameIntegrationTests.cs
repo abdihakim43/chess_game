@@ -16,7 +16,7 @@ namespace ChessGame.Tests
         public void AllPieceImages_ShouldExistInGothicFolder()
         {
             // Arrange
-            var mainWindow = new MainWindow();
+            var mainWindow = new MainWindow("PvP");
             var testPieces = new ChessPiece[]
             {
                 new Pawn("White", null),
